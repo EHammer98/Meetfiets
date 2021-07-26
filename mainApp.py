@@ -7,8 +7,6 @@
 
 #Crontab job: * * * * * (At every minute.)
 
-
-
 import serial
 
 ser = serial.Serial('/dev/ttyAMA0', 4800, timeout=4)
