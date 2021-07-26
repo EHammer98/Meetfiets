@@ -5,7 +5,7 @@
 #ser.write(str.encode(':0603000C000145BE\r\n'))
 #print(repr(ser.read(1000)))  # Read 1000 bytes, or wait for timeout
 
-
+#Crontab job: * * * * * (At every minute.)
 
 
 
