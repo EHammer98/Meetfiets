@@ -60,13 +60,16 @@ def main():
 
         for f in sensorFunc:
             id = sensorFunc.index(f)
+            print(f)
+            func = sensorFunc[f]
+            print(func)
             print(id)
             if id < 3:
-                v.insert(id,  rs485_crc16.f())
+                sensorsVal.insert(id,  rs485_crc16.f())
             if (id > 2) and (sensorFunc.index(f) < 6):
-                v.insert(id,  rs485.f())
+                sensorsVal.insert(id,  rs485.f())
             if id> 5:
-                v.insert(id,  i2c.f())
+                sensorsVal.insert(id,  i2c.f())
             time.sleep(3) # Sleep for 3 seconds
 
         #DEBUG
