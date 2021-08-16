@@ -16,8 +16,8 @@ def getNO2():
     val = client.read_holding_registers(address=0, count=1, unit=3)
     client.close()
     return val.registers
-    ################################
-def getNO2():
+    ################################ BC
+def getBC():
     con = client.connect()
     print(con)
     val = client.read_holding_registers(address=0, count=1, unit=2)
