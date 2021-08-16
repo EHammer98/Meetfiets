@@ -1,6 +1,9 @@
 import sys
 import time
+from datetime import datetime
 import configparser
+import threading
+import os
 import serial
 # insert at 1, 0 is the script path (or '' in REPL) 
 sys.path.append('/meetfietsApp/Meetfiets')
@@ -9,7 +12,7 @@ import rs485_crc16
 import i2c
 #SETUP  
 config = configparser.ConfigParser()
-version = '0.0.6'
+version = '0.0.7'
 
 #Settings
 try:
@@ -52,7 +55,7 @@ def main():
         sen_PM10 = ''
 
         sensorsVal = [sen_NO2,sen_BC,sen_O3,sen_SO2,sen_dB,sen_NO,sen_PM05,sen_PM1,sen_PM25,sen_PM4,sen_PM10]
-        sensorFunc = [getNO2,getBC,getO3,getSO2,getdB,getNO,getPM05_count,getPM1_count,getPM25_count,getPM4_count,getPM10_count]
+        sensorFunc = ["getNO2","getBC","getO3","getSO2","getdB","getNO","getPM05_count","getPM1_count","getPM25_count","getPM4_count","getPM10_count"]
         sensorSpecials = [sen_NO2,sen_BC,sen_O3,sen_PM05,sen_PM1,sen_PM25,sen_PM4,sen_PM10]
 
         for f in sensorFunc:
