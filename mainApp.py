@@ -1,12 +1,16 @@
+import sys
+import time
+import configparser
+sys.path.insert(1, '/home/pi/.local/lib/python3.7/site-packages (3.5)')
+import serial
+# insert at 1, 0 is the script path (or '' in REPL) 
+sys.path.insert(1, '/meetfietsApp/Meetfiets')
 import rs485.py
 import rs485_crc16.py
 import i2c.py
-import time
-import configparser
-
 #SETUP  
 config = configparser.ConfigParser()
-version = '0.0.2'
+version = '0.0.3'
 
 #Settings
 try:

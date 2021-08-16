@@ -1,4 +1,3 @@
-import serial
 
 def getSO2():
     ser = serial.Serial('/dev/ttyAMA0', 4800, timeout=4)
