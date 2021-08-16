@@ -12,7 +12,7 @@ import rs485_crc16
 import i2c
 #SETUP  
 config = configparser.ConfigParser()
-version = '0.0.8'
+version = '0.1.1'
 
 #Settings
 try:
@@ -55,19 +55,11 @@ def main():
         sen_PM10 = ''
 
         sensorsVal = [sen_NO2,sen_BC,sen_O3,sen_SO2,sen_dB,sen_NO,sen_PM05,sen_PM1,sen_PM25,sen_PM4,sen_PM10]
-        sensorFunc = ["getNO2","getBC","getO3","getSO2","getdB","getNO","getPM05_count","getPM1_count","getPM25_count","getPM4_count","getPM10_count"]
+        sensorFunc = [rs485_crc16.getNO2,rs485_crc16.getBC,rs485_crc16.getO3,rs485.getSO2,rs485.getdB,rs485.getNO,i2c.getPM05_count,i2c.getPM1_count,i2c.getPM25_count,i2c.getPM4_count,i2c.getPM10_count]
         sensorSpecials = [sen_NO2,sen_BC,sen_O3,sen_PM05,sen_PM1,sen_PM25,sen_PM4,sen_PM10]
 
         for f in sensorFunc:
-            if id < 3:
-                print(str(rs485_crc16.f()))
-                sensorsVal.insert(id,  rs485_crc16.f())
-            if (id > 2) and (sensorFunc.index(f) < 6):
-                print(str(rs485.f()))
-                sensorsVal.insert(id,  rs485.f())
-            if id> 5:
-                print(str(i2c.f()))
-                sensorsVal.insert(id,  i2c.f())
+            sensorsVal.insert(int(sensorFunc.index(f)), sensorFunc[int(sensorFunc.index(f))]())
             time.sleep(3) # Sleep for 3 seconds
 
         #DEBUG
