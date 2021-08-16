@@ -59,16 +59,14 @@ def main():
         sensorSpecials = [sen_NO2,sen_BC,sen_O3,sen_PM05,sen_PM1,sen_PM25,sen_PM4,sen_PM10]
 
         for f in sensorFunc:
-            id = sensorFunc.index(f)
-            print(f)
-            func = sensorFunc[f]
-            print(func)
-            print(id)
             if id < 3:
+                print(str(rs485_crc16.f()))
                 sensorsVal.insert(id,  rs485_crc16.f())
             if (id > 2) and (sensorFunc.index(f) < 6):
+                print(str(rs485.f()))
                 sensorsVal.insert(id,  rs485.f())
             if id> 5:
+                print(str(i2c.f()))
                 sensorsVal.insert(id,  i2c.f())
             time.sleep(3) # Sleep for 3 seconds
 
