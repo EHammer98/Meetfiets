@@ -1,54 +1,65 @@
 import configparser
-data = configparser.ConfigParser()
+dataFile = configparser.ConfigParser()
 
-def getData():
+
+def getData(sps30dataPath):
     try:
-        data.read('/meetfietsApp/Meetfiets/sps30data.ini') #CHANGE THIS IF YOU HAVE MOVED THE SETTINGS.INI FILE!!!
-        print(config.sections())
+        dataFile.read(sps30dataPath) #CHANGE THIS IF YOU HAVE MOVED THE SETTINGS.INI FILE!!!
+        print(dataFile.sections())
     except Exception as e: print("ERROR: ", e)
 
-def getPM05_count():
-    getData()
+def getPM05_count(sps30dataPath, debug):
+    getData(sps30dataPath)
+    data = dataFile['pm05']
     val = data['count']
     return val
 
-def getPM1_count():
-    getData()
+def getPM1_count(sps30dataPath, debug):
+    getData(sps30dataPath)
+    data = dataFile['pm1']
     val = data['count']
     return val
-def getp1_ug():
-    getData()
+def getPM1_ug(sps30dataPath, debug):
+    getData(sps30dataPath)
+    data = dataFile['pm1']
     val = data['ug']
     return val
 
-def getPM25_count():
-    getData()
+def getPM25_count(sps30dataPath, debug):
+    getData(sps30dataPath)
+    data = dataFile['pm25']
     val = data['count']
     return val
-def getPM25_ug():
-    getData()
+def getPM25_ug(sps30dataPath, debug):
+    getData(sps30dataPath)
+    data = dataFile['pm25']
     val = data['ug']
     return val
 
-def getPM4_count():
-    getData()
+def getPM4_count(sps30dataPath, debug):
+    getData(sps30dataPath)
+    data = dataFile['pm4']
     val = data['count']
     return val
-def getPM4_ug():
-    getData()
+def getPM4_ug(sps30dataPath, debug):
+    getData(sps30dataPath)
+    data = dataFile['pm4']
     val = data['ug']
     return val
 
-def getPM10_count():
-    getData()
+def getPM10_count(sps30dataPath, debug):
+    getData(sps30dataPath)
+    data = dataFile['pm10']
     val = data['count']
     return val
-def getPM10_ug():
-    getData()
+def getPM10_ug(sps30dataPath, debug):
+    getData(sps30dataPath)
+    data = dataFile['pm10']
     val = data['ug']
     return val
 
-def getPM_type():
-    getData()
+def getPM_type(sps30dataPath, debug):
+    getData(sps30dataPath)
+    data = dataFile['pm']
     val = data['type']
     return val
