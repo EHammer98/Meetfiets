@@ -270,16 +270,16 @@ def printHuman(data):
   print("pm_typ: %f" % calcFloat(data[54:60]))
 
 def putInConfigFile(data):
-    config['pm05']['count'] = int(calcFloat(data[24:30]))   
-    config['pm1']['count'] = int(calcFloat(data[30:36]))   
-    config['pm1']['ug'] = int(calcFloat(data[6:12]))
-    config['pm25']['count'] = int(calcFloat(data[42:48]))
-    config['pm25']['ug'] = int(calcFloat(data[6:12]))
-    config['pm4']['count'] = int(calcFloat(data[42:48]))
-    config['pm4']['ug'] = int(calcFloat(data[12:18]))
-    config['pm10']['count'] = int(calcFloat(data[48:54]))
-    config['pm10']['ug'] = int(calcFloat(data[18:24]))
-    config['pm']['type'] = int(calcFloat(data[54:60]))
+    config['pm05']['count'] = calcFloat(data[24:30])
+    config['pm1']['count'] = calcFloat(data[30:36])  
+    config['pm1']['ug'] = calcFloat(data[6:12])
+    config['pm25']['count'] = calcFloat(data[42:48])
+    config['pm25']['ug'] = calcFloat(data[6:12])
+    config['pm4']['count'] = calcFloat(data[42:48])
+    config['pm4']['ug'] = calcFloat(data[12:18])
+    config['pm10']['count'] = calcFloat(data[48:54])
+    config['pm10']['ug'] = calcFloat(data[18:24])
+    config['pm']['type'] = calcFloat(data[54:60])
     with open(configDataPath, 'w') as configfile:    # save
         config.write(configfile)
 
