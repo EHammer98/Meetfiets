@@ -11,7 +11,7 @@ import rs485_crc16
 import i2c
 import api
 import pathlib
-
+import socket
 
 #SETUP  
 config = configparser.ConfigParser()
@@ -22,6 +22,10 @@ try:
     config.read('settings.ini') #CHANGE THIS IF YOU HAVE MOVED THE SETTINGS.INI FILE!!! DEFAULT: /meetfietsApp/Meetfiets/settings.ini
     print(config.sections())
 except Exception as e: print("ERROR: ", e) 
+
+config['meetfietsApp']['fiets']= str(socket.gethostname())
+with open('settings.ini', 'w') as configfile:    # save
+    config.write(configfile)
 settings = config['meetfietsApp']
 debug=settings['debug']
 urlAPI=settings['urlAPI']
@@ -29,7 +33,6 @@ restartTime=settings['restartTime']
 logFilePath=settings['logFilePath']
 fiets=settings['fiets']
 sps30dataPath=settings['sps30dataPath']
-
 try:
     logFile = open(logFilePath, 'a')
 except Exception as u: print("ERROR: ", u)
