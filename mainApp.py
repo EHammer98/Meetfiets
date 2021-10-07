@@ -15,7 +15,7 @@ import pathlib
 
 #SETUP  
 config = configparser.ConfigParser()
-version = '0.1.2'
+version = '0.1.4'
 
 #Settings
 try:
@@ -140,7 +140,7 @@ def main():
         logFile.write(msg)
         logFile.close()
         
-    timer = threading.Timer(restartTime, main) #60.0
+    timer = threading.Timer(int(restartTime), main) #60.0
     timer.start()
     now = datetime.now()
     dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
@@ -149,5 +149,5 @@ def main():
     logFile.write(msg) 
     logFile.close()
 
-timer = threading.Timer(1.0, main) 
+timer = threading.Timer(1, main) 
 timer.start() 

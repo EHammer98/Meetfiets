@@ -49,7 +49,7 @@ def convertData(logFileP, dataList, bike, idList, typeList, dateTime, url, debug
             headers =  {'Content-Type': 'application/json'}
             print("URL: ", url, "\n")
             print("DATA: ", str(json.dumps(x)), "\n")
-            response = requests.request("POST", url, data=json.dumps(x), headers=headers)
+            response = requests.request("POST", url, headers=headers, data=json.dumps(x))
             print(response, "\n")
             #DEBUG
             if debug == '1' or debug == '2':      
