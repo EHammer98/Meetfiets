@@ -15,7 +15,7 @@ import socket
 
 #SETUP  
 config = configparser.ConfigParser()
-version = '0.1.5'
+version = '0.1.6'
 
 #Settings
 try:
@@ -24,7 +24,7 @@ try:
 except Exception as e: print("ERROR: ", e) 
 
 config['meetfietsApp']['fiets']= str(socket.gethostname())
-#config['meetfietsApp']['fiets']= "meetfiets01" #    debug
+#config['meetfietsApp']['fiets']= "meetfiets02" #    debug
 with open('settings.ini', 'w') as configfile:    # save
     config.write(configfile)
 settings = config['meetfietsApp']
@@ -129,7 +129,7 @@ def main():
             print("sensorNorm: ", sensorNorm, "\n")
             print("sensorSpecialsB: ", sensorSpecialsB, "\n")
             print("NEW DATA LIST: ", newSenVal, "\n")
-        now = datetime.now()
+        now = datetime.utcnow()
         dateTime = now.strftime("%Y-%m-%dT%H:%M:%SZ")
         api.convertData(logFilePath, newSenVal, fiets, sensorID, sensorType, dateTime, urlAPI, debug)
     except Exception as u:
