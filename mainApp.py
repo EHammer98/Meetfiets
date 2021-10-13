@@ -15,7 +15,7 @@ import socket
 
 #SETUP  
 config = configparser.ConfigParser()
-version = '0.1.4'
+version = '0.1.5'
 
 #Settings
 try:
@@ -24,6 +24,7 @@ try:
 except Exception as e: print("ERROR: ", e) 
 
 config['meetfietsApp']['fiets']= str(socket.gethostname())
+#config['meetfietsApp']['fiets']= "meetfiets01" #    debug
 with open('settings.ini', 'w') as configfile:    # save
     config.write(configfile)
 settings = config['meetfietsApp']

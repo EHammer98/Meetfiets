@@ -11,10 +11,7 @@ def convertData(logFileP, dataList, bike, idList, typeList, dateTime, url, debug
             x = {
               "identifier": bike,
               "measurements": [
-                {"deveui": idList[dataList.index(i)]},
-                {"type": typeList[dataList.index(i)]},
-                {"datetime": str(dateTime)},
-                {"payload": dataList[dataList.index(i)]}
+                {"deveui": bike[-2:] + str(idList[dataList.index(i)]), "type": typeList[dataList.index(i)], "datetime": str(dateTime), "payload": dataList[dataList.index(i)].replace(" ", "")}
               ]
             }
                             
@@ -23,13 +20,13 @@ def convertData(logFileP, dataList, bike, idList, typeList, dateTime, url, debug
             if debug == '1' or debug == '2':      
                 now = datetime.now()
                 dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-                msg = dt_string + "|INFO: Sensor-ID> " + str(idList[dataList.index(i)]) + "\n" 
+                msg = dt_string + "|INFO: Sensor-ID> " + str(bike[-2:] + str(idList[dataList.index(i)])) + "\n" 
                 logFile = open(logFileP, 'a')
                 logFile.write(msg)
                 logFile.close()
                 now = datetime.now()
                 dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-                msg = dt_string + "|INFO: Sensor-Type> " + str(typeList[dataList.index(i)]) + "\n"
+                msg = dt_string + "|INFO: Sensor-Type> " + str(typeList[dataList.index(i)].replace(" ", "")) + "\n"
                 logFile = open(logFileP, 'a')
                 logFile.write(msg)
                 logFile.close()
