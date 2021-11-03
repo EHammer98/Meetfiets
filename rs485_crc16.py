@@ -12,7 +12,10 @@ def getO3(debug):
         print(con)
         val = client.read_holding_registers(address=10, count=1, unit=4)
         client.close()
-        return val
+        if isinstance(val, str) == False:
+            return val
+        else:
+            return 0
         #val.registers
 def getNO2(debug):
     if debug == '2':
@@ -22,7 +25,10 @@ def getNO2(debug):
         print(con)
         val = client.read_holding_registers(address=0, count=1, unit=1)
         client.close()
-        return val
+        if isinstance(val, str) == False:
+            return val
+        else:
+            return 0
         #val.registers
     ################################ BC
 def getBC(debug):
@@ -33,5 +39,8 @@ def getBC(debug):
         print(con)
         val = client.read_holding_registers(address=0, count=1, unit=3)
         client.close()
-        return val
+        if isinstance(val, str) == False:
+            return val
+        else:
+            return 0
         #val.registers
