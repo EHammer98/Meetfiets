@@ -272,8 +272,8 @@ def printHuman(data):
 def putInConfigFile(data):
     config['pm05']['count'] = str(int(calcFloat(data[24:30])))
     config['pm1']['count'] = str(int(calcFloat(data[30:36])))  
-    config['pm1']['ug'] = str(int(calcFloat(data[6:12])))
-    config['pm25']['count'] = str(int(calcFloat(data[42:48])))
+    config['pm1']['ug'] = str(int(calcFloat(data)))
+    config['pm25']['count'] = str(int(calcFloat(data[36:42])))
     config['pm25']['ug'] = str(int(calcFloat(data[6:12])))
     config['pm4']['count'] = str(int(calcFloat(data[42:48])))
     config['pm4']['ug'] = str(int(calcFloat(data[12:18])))
