@@ -15,11 +15,11 @@ import socket
 
 #SETUP  
 config = configparser.ConfigParser()
-version = '0.1.9.1'
+version = '0.1.9.2'
 
 #Settings
 try:
-    config.read('/meetfietsApp/Meetfiets/settings.ini') #CHANGE THIS IF YOU HAVE MOVED THE SETTINGS.INI FILE!!! DEFAULT: /meetfietsApp/Meetfiets/settings.ini
+    config.read('settings.ini') #CHANGE THIS IF YOU HAVE MOVED THE SETTINGS.INI FILE!!! DEFAULT: /meetfietsApp/Meetfiets/settings.ini
     print(config.sections())
 except Exception as e: print("ERROR: ", e) 
 
@@ -118,7 +118,7 @@ def main():
             for m in sensorSpecialsA:
                     if m != "":
                         val = sensorSpecialsA[sensorSpecialsA.index(m)] 
-                        if len(val) == 1:
+                        if len(str(val)) == 1:
                             val = "0" + val
                         newData = '00 00 00 '+val+' 00 00'
                         if debug == '2':

@@ -11,7 +11,7 @@ def convertData(logFileP, dataList, bike, idList, typeList, dateTime, url, debug
             x = {
               "identifier": bike,
               "measurements": [
-                {"deveui": bike[-2:] + str(idList[dataList.index(i)]), "type": typeList[dataList.index(i)], "datetime": str(dateTime), "payload": dataList[dataList.index(i)].replace(" ", "")}
+                {"deveui": bike[-2:] + str(idList[dataList.index(i)]), "type": typeList[dataList.index(i)], "datetime": str(dateTime), "payload": str(dataList[dataList.index(i)]).replace(" ", "")}
               ]
             }
                             

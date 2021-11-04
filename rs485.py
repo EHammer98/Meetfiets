@@ -1,5 +1,5 @@
-import serial
-ser = serial.Serial('/dev/ttyAMA0', 4800, timeout=4)
+#import serial
+#ser = serial.Serial('/dev/ttyAMA0', 4800, timeout=4)
 
 def getSO2(debug):  
     if debug == '2':
