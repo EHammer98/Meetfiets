@@ -19,7 +19,7 @@ version = '0.1.9.2'
 
 #Settings
 try:
-    config.read('settings.ini') #CHANGE THIS IF YOU HAVE MOVED THE SETTINGS.INI FILE!!! DEFAULT: /meetfietsApp/Meetfiets/settings.ini
+    config.read('/meetfietsApp/Meetfiets/settings.ini') #CHANGE THIS IF YOU HAVE MOVED THE SETTINGS.INI FILE!!! DEFAULT: /meetfietsApp/Meetfiets/settings.ini
     print(config.sections())
 except Exception as e: print("ERROR: ", e) 
 
