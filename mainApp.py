@@ -15,7 +15,7 @@ import socket
 
 #SETUP  
 config = configparser.ConfigParser()
-version = '0.1.9'
+version = '0.1.9.1'
 
 #Settings
 try:
