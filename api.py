@@ -5,11 +5,12 @@ import time
 from datetime import datetime
 import os
 
-def convertData(logFileP, dataList, bike, idList, typeList, dateTime, url, debug):
+def convertData(logFileP, dataList, bike, idList, typeList, dateTime, url, debug, version):
     try:
         for i in dataList:
             x = {
               "identifier": bike,
+              "version": version,
               "measurements": [
                 {"deveui": bike[-2:] + str(idList[dataList.index(i)]), "type": typeList[dataList.index(i)], "datetime": str(dateTime), "payload": str(dataList[dataList.index(i)]).replace(" ", "")}
               ]

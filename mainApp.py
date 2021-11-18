@@ -12,10 +12,14 @@ import i2c
 import api
 import pathlib
 import socket
+from tendo import singleton
+
+#INSTANCE CHECK
+me = singleton.SingleInstance() # will sys.exit(-1) if other instance is running
 
 #SETUP  
 config = configparser.ConfigParser()
-version = '0.1.9.2'
+version = '0.1.9.3'
 
 #Settings
 try:
@@ -155,7 +159,7 @@ def main():
                 print("NEW DATA LIST: ", newSenVal, "\n")
             now = datetime.utcnow()
             dateTime = now.strftime("%Y-%m-%dT%H:%M:%SZ")
-            api.convertData(logFilePath, newSenVal, fiets, sensorID, sensorType, dateTime, urlAPI, debug)
+            api.convertData(logFilePath, newSenVal, fiets, sensorID, sensorType, dateTime, urlAPI, debug, version)
         except Exception as u:
             now = datetime.now()
             # dd/mm/YY H:M:S
