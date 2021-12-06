@@ -19,7 +19,7 @@ me = singleton.SingleInstance() # will sys.exit(-1) if other instance is running
 
 #SETUP  
 config = configparser.ConfigParser()
-version = '0.1.9.3'
+version = '0.1.9.4'
 
 #Settings
 try:
@@ -85,7 +85,8 @@ def main():
                 print("vall2: " + str(sensorFunc[int(indx)]) + "\n")
                 sensorSpecialsB.insert(int(indx), sensorFunc[int(indx)])
                 indx = indx + 1
-            sensorNorm.insert(int(sensorFunc.index(f)), sensorFunc[int(sensorFunc.index(f))])
+            if int(sensorFunc.index(f)) == 3 or int(sensorFunc.index(f)) == 4 or int(sensorFunc.index(f)) == 5:  
+                sensorNorm.insert(int(sensorFunc.index(f)), sensorFunc[int(sensorFunc.index(f))])
             time.sleep(3) # Sleep for 3 seconds
 
 
@@ -146,8 +147,8 @@ def main():
         try:
             while('' in sensorNorm) :
                 sensorNorm.remove('')
-            del sensorNorm[:3]
-            del sensorNorm[3:]
+            #del sensorNorm[:3]
+            #del sensorNorm[3:]
             newSenVal = sensorSpecialsA + sensorNorm + sensorSpecialsB
             if debug == '2':
                 print("sensorSpecialsA len: ", len(sensorSpecialsA), "\n")
