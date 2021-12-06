@@ -19,7 +19,7 @@ me = singleton.SingleInstance() # will sys.exit(-1) if other instance is running
 
 #SETUP  
 config = configparser.ConfigParser()
-version = '0.1.9.3'
+version = '0.1.9.4'
 
 #Settings
 try:
