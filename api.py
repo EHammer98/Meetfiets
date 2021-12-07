@@ -27,6 +27,12 @@ def convertData(logFileP, dataList, bike, idList, typeList, dateTime, url, debug
                 logFile.close()
                 now = datetime.now()
                 dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+                msg = dt_string + "|INFO: Version> " + str(version) + "\n" 
+                logFile = open(logFileP, 'a')
+                logFile.write(msg)
+                logFile.close()
+                now = datetime.now()
+                dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
                 msg = dt_string + "|INFO: Sensor-Type> " + str(typeList[dataList.index(i)].replace(" ", "")) + "\n"
                 logFile = open(logFileP, 'a')
                 logFile.write(msg)
