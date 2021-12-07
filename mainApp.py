@@ -73,18 +73,15 @@ def main():
         sensorNorm = [sen_SO2,sen_dB,sen_NO]
         sensorSpecialsB = [sen_PM05,sen_PM1,sen_PM25,sen_PM4,sen_PM10]
 
-        indx = 6
         for f in sensorFunc:
-            
             if int(sensorFunc.index(f)) < 3:
                 print("id: " + str(sensorFunc.index(f)) + "\n")
                 print("vall: " + str(sensorFunc[int(sensorFunc.index(f))]) + "\n")
                 sensorSpecialsA.insert(int(sensorFunc.index(f)), sensorFunc[int(sensorFunc.index(f))])
-            if int(sensorFunc.index(f)) == indx:      
-                print("id:2 " + str(indx) + "\n")
-                print("vall2: " + str(sensorFunc[int(indx)]) + "\n")
-                sensorSpecialsB.insert(int(indx), sensorFunc[int(indx)])
-                indx = indx + 1
+            if int(sensorFunc.index(f)) > 5:      
+                print("id:2 " + str(int(sensorFunc.index(f))) + "\n")
+                print("vall2: " + str(sensorFunc[int(sensorFunc.index(f))]) + "\n")
+                sensorSpecialsB.insert(int(sensorFunc.index(f)), sensorFunc[int(sensorFunc.index(f))])
             sensorNorm.insert(int(sensorFunc.index(f)), sensorFunc[int(sensorFunc.index(f))])
             time.sleep(3) # Sleep for 3 seconds
 

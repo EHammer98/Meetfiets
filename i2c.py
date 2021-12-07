@@ -19,6 +19,7 @@ def getPM1_count(sps30dataPath, debug):
     data = dataFile['pm1']
     val = data['count']
     return val
+
 def getPM1_ug(sps30dataPath, debug):
     getData(sps30dataPath)
     data = dataFile['pm1']
@@ -30,6 +31,7 @@ def getPM25_count(sps30dataPath, debug):
     data = dataFile['pm25']
     val = data['count']
     return val
+
 def getPM25_ug(sps30dataPath, debug):
     getData(sps30dataPath)
     data = dataFile['pm25']
@@ -41,6 +43,7 @@ def getPM4_count(sps30dataPath, debug):
     data = dataFile['pm4']
     val = data['count']
     return val
+
 def getPM4_ug(sps30dataPath, debug):
     getData(sps30dataPath)
     data = dataFile['pm4']
@@ -52,6 +55,7 @@ def getPM10_count(sps30dataPath, debug):
     data = dataFile['pm10']
     val = data['count']
     return val
+
 def getPM10_ug(sps30dataPath, debug):
     getData(sps30dataPath)
     data = dataFile['pm10']

@@ -15,8 +15,7 @@ def convertData(logFileP, dataList, bike, idList, typeList, dateTime, url, debug
                 {"deveui": bike[-2:] + str(idList[dataList.index(i)]), "type": typeList[dataList.index(i)], "datetime": str(dateTime), "payload": str(dataList[dataList.index(i)]).replace(" ", "")}
               ]
             }
-                            
-                
+                                       
             #DEBUG
             if debug == '1' or debug == '2':      
                 now = datetime.now()
