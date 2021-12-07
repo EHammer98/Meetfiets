@@ -19,7 +19,7 @@ me = singleton.SingleInstance() # will sys.exit(-1) if other instance is running
 
 #SETUP  
 config = configparser.ConfigParser()
-version = '0.1.9.3'
+version = '0.1.9.5'
 
 #Settings
 try:
@@ -104,8 +104,11 @@ def main():
                             newVal = "0" + newVal
                         newData = '00 00 00 '+newVal+' 00 00'
                         if debug == '2':
+                            newData = '00 00 00 00 FF FF 00'
                             print("New data: " + str(newData) + "\n")
-                        sensorSpecialsB[sensorSpecialsB.index(s)] = newData
+                            sensorSpecialsB[sensorSpecialsB.index(s)] = newData
+                        else:
+                            sensorSpecialsB[sensorSpecialsB.index(s)] = newData
         except Exception as u:
             now = datetime.now()
             # dd/mm/YY H:M:S
