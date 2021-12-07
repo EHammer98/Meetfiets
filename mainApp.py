@@ -19,7 +19,7 @@ me = singleton.SingleInstance() # will sys.exit(-1) if other instance is running
 
 #SETUP  
 config = configparser.ConfigParser()
-version = '0.1.9.4'
+version = '0.1.9.5'
 
 #Settings
 try:
@@ -128,6 +128,12 @@ def main():
                         if debug == '2':
                             print("New data: " + str(newData) + "\n")
                         sensorSpecialsA[sensorSpecialsA.index(m)] = newData
+                        if debug == '2':
+                            newData = '00 00 00 00 FF FF 00'
+                            print("New data: " + str(newData) + "\n")
+                            sensorSpecialsA[sensorSpecialsA.index(m)] = newData
+                        else:
+                            sensorSpecialsA[sensorSpecialsA.index(m)] = newData
             while('' in sensorSpecialsA) :
                 sensorSpecialsA.remove('')
             while('' in sensorSpecialsB) :
