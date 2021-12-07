@@ -89,11 +89,11 @@ def main():
             time.sleep(3) # Sleep for 3 seconds
 
 
-        print("list: " + str(sensorSpecialsB) + "\n")
+        #print("list: " + str(sensorSpecialsA) + "\n")
         try:
-            for s in sensorSpecialsB:
+            for s in sensorSpecialsA:
                     if s != "":
-                        val = sensorSpecialsB[sensorSpecialsB.index(s)] * 100
+                        val = sensorSpecialsA[sensorSpecialsA.index(s)] * 100
                         if debug == '2':
                             print("hex: " + hex(int(s)) + "\n")                 
                         val = hex(int(s))     
@@ -104,8 +104,11 @@ def main():
                             newVal = "0" + newVal
                         newData = '00 00 00 '+newVal+' 00 00'
                         if debug == '2':
+                            newData = '00 00 00 FF FF 00'
                             print("New data: " + str(newData) + "\n")
-                        sensorSpecialsB[sensorSpecialsB.index(s)] = newData
+                            sensorSpecialsA[sensorSpecialsA.index(s)] = newData
+                        else:
+                            sensorSpecialsA[sensorSpecialsA.index(s)] = newData
         except Exception as u:
             now = datetime.now()
             # dd/mm/YY H:M:S
@@ -119,21 +122,15 @@ def main():
             logFile.close()
 
         try:
-            for m in sensorSpecialsA:
+            for m in sensorSpecialsB:
                     if m != "":
-                        val = sensorSpecialsA[sensorSpecialsA.index(m)] 
+                        val = sensorSpecialsB[sensorSpecialsB.index(m)] 
                         if len(str(val)) == 1:
                             val = "0" + val
                         newData = '00 00 00 '+val+' 00 00'
                         if debug == '2':
                             print("New data: " + str(newData) + "\n")
-                        sensorSpecialsA[sensorSpecialsA.index(m)] = newData
-                        if debug == '2':
-                            newData = '00 00 00 00 FF FF 00'
-                            print("New data: " + str(newData) + "\n")
-                            sensorSpecialsA[sensorSpecialsA.index(m)] = newData
-                        else:
-                            sensorSpecialsA[sensorSpecialsA.index(m)] = newData
+                        sensorSpecialsB[sensorSpecialsB.index(m)] = newData
             while('' in sensorSpecialsA) :
                 sensorSpecialsA.remove('')
             while('' in sensorSpecialsB) :
