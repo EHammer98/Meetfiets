@@ -19,7 +19,7 @@ me = singleton.SingleInstance() # will sys.exit(-1) if other instance is running
 
 #SETUP  
 config = configparser.ConfigParser()
-version = '0.1.9.5'
+version = '0.1.9.6'
 
 #Settings
 try:
@@ -157,6 +157,10 @@ def main():
                 print("sensorNorm: ", sensorNorm, "\n")
                 print("sensorSpecialsB: ", sensorSpecialsB, "\n")
                 print("NEW DATA LIST: ", newSenVal, "\n")
+                print("fiets: ", fiets, "\n")
+                print("newSenVal: ", newSenVal, "\n")
+                print("sensorID: ", sensorID, "\n")
+                print("sensorType: ", sensorType, "\n")
             now = datetime.utcnow()
             dateTime = now.strftime("%Y-%m-%dT%H:%M:%SZ")
             api.convertData(logFilePath, newSenVal, fiets, sensorID, sensorType, dateTime, urlAPI, debug, version)
