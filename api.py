@@ -7,20 +7,21 @@ import os
 
 def convertData(logFileP, dataList, bike, idList, typeList, dateTime, url, debug, version):
     try:
+        body ={
+                      "identifier": bike,
+                      "version": version,
+                      "measurements": []
+        }
+        itms=[]
+        indx = 0
         for i in dataList:
-            x = {
-              "identifier": bike,
-              "version": version,
-              "measurements": [
-                {"deveui": bike[-2:] + str(idList[dataList.index(i)]), "type": typeList[dataList.index(i)], "datetime": str(dateTime), "payload": str(dataList[dataList.index(i)]).replace(" ", "")}
-              ]
-            }
-                                       
+            itms.append({"deveui": bike[-2:] + str(idList[indx]), "type": typeList[indx], "datetime": str(dateTime), "payload": str(dataList[indx]).replace(" ", "")})                                
             #DEBUG
-            if debug == '1' or debug == '2':      
+            if debug == '1' or debug == '2':  
+                print("index: ", str(indx), "\n")
                 now = datetime.now()
                 dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-                msg = dt_string + "|INFO: Sensor-ID> " + str(bike[-2:] + str(idList[dataList.index(i)])) + "\n" 
+                msg = dt_string + "|INFO: Sensor-ID> " + str(bike[-2:] + str(idList[indx])) + "\n" 
                 logFile = open(logFileP, 'a')
                 logFile.write(msg)
                 logFile.close()
@@ -32,13 +33,13 @@ def convertData(logFileP, dataList, bike, idList, typeList, dateTime, url, debug
                 logFile.close()
                 now = datetime.now()
                 dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-                msg = dt_string + "|INFO: Sensor-Type> " + str(typeList[dataList.index(i)].replace(" ", "")) + "\n"
+                msg = dt_string + "|INFO: Sensor-Type> " + str(typeList[indx].replace(" ", "")) + "\n"
                 logFile = open(logFileP, 'a')
                 logFile.write(msg)
                 logFile.close()
                 now = datetime.now()
                 dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-                msg = dt_string + "|INFO: Sensor-Data> " + str(dataList[dataList.index(i)]) + "\n"
+                msg = dt_string + "|INFO: Sensor-Data> " + str(dataList[indx]) + "\n"
                 logFile = open(logFileP, 'a')
                 logFile.write(msg)
                 logFile.close()
@@ -48,20 +49,23 @@ def convertData(logFileP, dataList, bike, idList, typeList, dateTime, url, debug
                 logFile = open(logFileP, 'a')
                 logFile.write(msg)
                 logFile.close()
-          
-            headers =  {'Content-Type': 'application/json'}
-            print("URL: ", url, "\n")
-            print("DATA: ", str(json.dumps(x)), "\n")
-            response = requests.request("POST", url, headers=headers, data=json.dumps(x))
-            print(response, "\n")
-            #DEBUG
-            if debug == '1' or debug == '2':      
-                now = datetime.now()
-                dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-                msg = dt_string + "|INFO: HTTP-code> " + str(response.status_code) + "\n" 
-                logFile = open(logFileP, 'a')
-                logFile.write(msg)
-                logFile.close()
+            indx += 1
+
+        body["measurements"].extend(itms)                                                
+        headers =  {'Content-Type': 'application/json'}
+        print("URL: ", url, "\n")
+        print("DATA: ", str(json.dumps(body)), "\n")
+        response = requests.request("POST", url, headers=headers, data=json.dumps(body))
+        print(response, "\n")
+
+        #DEBUG
+        if debug == '1' or debug == '2':      
+            now = datetime.now()
+            dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+            msg = dt_string + "|INFO: HTTP-code> " + str(response.status_code) + "\n" 
+            logFile = open(logFileP, 'a')
+            logFile.write(msg)
+            logFile.close()
             
     except Exception as u:
         now = datetime.now()
