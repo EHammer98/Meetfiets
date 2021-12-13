@@ -19,7 +19,7 @@ me = singleton.SingleInstance() # will sys.exit(-1) if other instance is running
 
 #SETUP  
 config = configparser.ConfigParser()
-version = '0.1.9.6'
+version = '0.1.9.7'
 
 #Settings
 try:
@@ -73,16 +73,18 @@ def main():
         sensorNorm = [sen_SO2,sen_dB,sen_NO]
         sensorSpecialsB = [sen_PM05,sen_PM1,sen_PM25,sen_PM4,sen_PM10]
 
+        indx = 0
         for f in sensorFunc:
-            if int(sensorFunc.index(f)) < 3:
-                print("id: " + str(sensorFunc.index(f)) + "\n")
-                print("vall: " + str(sensorFunc[int(sensorFunc.index(f))]) + "\n")
-                sensorSpecialsA.insert(int(sensorFunc.index(f)), sensorFunc[int(sensorFunc.index(f))])
-            if int(sensorFunc.index(f)) > 5:      
-                print("id:2 " + str(int(sensorFunc.index(f))) + "\n")
-                print("vall2: " + str(sensorFunc[int(sensorFunc.index(f))]) + "\n")
-                sensorSpecialsB.insert(int(sensorFunc.index(f)), sensorFunc[int(sensorFunc.index(f))])
-            sensorNorm.insert(int(sensorFunc.index(f)), sensorFunc[int(sensorFunc.index(f))])
+            if int(indx) < 3:
+                print("id: " + str(indx) + "\n")
+                print("vall: " + str(sensorFunc[int(indx)]) + "\n")
+                sensorSpecialsA.insert(int(indx), sensorFunc[int(indx)])
+            if int(indx) > 5:      
+                print("id:2 " + str(int(indx)) + "\n")
+                print("vall2: " + str(sensorFunc[int(indx)]) + "\n")
+                sensorSpecialsB.insert(int(indx), sensorFunc[int(indx)])
+            sensorNorm.insert(int(indx), sensorFunc[int(indx)])
+            indx += 1
             time.sleep(3) # Sleep for 3 seconds
 
 
