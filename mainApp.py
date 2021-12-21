@@ -19,7 +19,7 @@ me = singleton.SingleInstance() # will sys.exit(-1) if other instance is running
 
 #SETUP  
 config = configparser.ConfigParser()
-version = '0.1.9.8'
+version = '0.1.9.9'
 
 #Settings
 try:
@@ -125,7 +125,7 @@ def main():
                     if m != "":
                         val = sensorSpecialsB[sensorSpecialsB.index(m)] 
                         if len(str(val)) == 1:
-                            val = hex(int("0" + val))                         
+                            val = format(int(val),'X')                        
                         newData = '00 00 00 '+val+' 00 00'
                         if debug == '2':
                             print("New data: " + str(newData) + "\n")
