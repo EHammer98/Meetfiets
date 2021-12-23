@@ -19,7 +19,7 @@ me = singleton.SingleInstance() # will sys.exit(-1) if other instance is running
 
 #SETUP  
 config = configparser.ConfigParser()
-version = '0.2.0.1'
+version = '0.2.0.2'
 
 #Settings
 try:
@@ -101,9 +101,9 @@ def main():
                             print("new val: ", newVal, "\n")
                         if len(newVal) == 1:
                             newVal = "0" + newVal
-                        newData = '00 00 00 '+newVal+' 00 00'
+                        newData = '00 00 00 00 '+newVal+' 00'
                         if debug == '2':
-                            newData = '00 00 00 FF 00 00'
+                            newData = '00 00 00 FF FF 00'
                             print("New data: " + str(newData) + "\n")
                             sensorSpecialsA[sensorSpecialsA.index(s)] = newData
                         else:
@@ -124,16 +124,10 @@ def main():
             for m in sensorSpecialsB:
                     if m != "":
                         val = sensorSpecialsB[sensorSpecialsB.index(m)] 
-                        if len(str(val)) == 1:
-                            val = hex(int(val))      
-                            if (val.find('x') != -1):
-                                val = val.replace("x", "")
-                        
-                        else:
-                            val = hex(int(val))      
-                            if (val.find('x') != -1):
-                                val = val.replace("x", "")
-                        newData = '00 00 00 '+val+' 00 00'
+                        val = hex(int(val))      
+                        if (val.find('x') != -1):
+                            val = val.replace("x", "")
+                        newData = '00 00 00 00 '+val+' 00'
                         if debug == '2':
                             print("New data: " + str(newData) + "\n")
                         sensorSpecialsB[sensorSpecialsB.index(m)] = newData
