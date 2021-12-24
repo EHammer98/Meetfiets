@@ -19,7 +19,7 @@ me = singleton.SingleInstance() # will sys.exit(-1) if other instance is running
 
 #SETUP  
 config = configparser.ConfigParser()
-version = '0.2.0.2'
+version = '0.2.0.3'
 
 #Settings
 try:
@@ -127,6 +127,8 @@ def main():
                         val = hex(int(val))      
                         if (val.find('x') != -1):
                             val = val.replace("x", "")
+                        if (len(val) == 3):
+                            val = val[1:]
                         newData = '00 00 00 00 '+val+' 00'
                         if debug == '2':
                             print("New data: " + str(newData) + "\n")
